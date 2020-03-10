@@ -19,6 +19,7 @@ app.get("/", function(req, res) {
 })
 
 app.post("/", function(req, res) {
+
   const firstName = req.body.firstName
   const lastName = req.body.lastName
   const email = req.body.email
@@ -32,7 +33,7 @@ app.post("/", function(req, res) {
       status: "subscribed",
       merger_fields: {
         FNAME: firstName,
-        LNAME: lastName,
+        LNAME: lastName // no comma after this line
       }
     }]
   };
@@ -41,7 +42,7 @@ app.post("/", function(req, res) {
 
   // we use the callback function(response) to ask a response from MailChimp server.
   // in MailChimp Code examples, we can copy the url, we need to change the X to the last number in our API key and add /listid
-  const url = "https://us19.api.mailchimp.com/3.0/cb9ed66b54"
+  const url = "https://us19.api.mailchimp.com/3.0/lists/cb9ed66b54"
 
   // in Node.js http_request_options_callback there are many options,, we will use method <string> A string specifying the HTTP request method. Default is "GET"
 
@@ -54,8 +55,10 @@ app.post("/", function(req, res) {
 
   const options = {
     method: "POST",
-    auth: "lutang123: e865c27be081207d05d6b879203c6cd4-us19"
+    auth: "lutang123:4780b14a396fc33a18e5352cd740da0a-us19" // no space, username can be anything
   }
+
+  // Post data to MailChimp's Server via their API
 
   // see this https://stackoverflow.com/questions/40537749/how-do-i-make-a-https-post-in-node-js-without-any-third-party-module
   // make the request as a constant
@@ -80,13 +83,18 @@ app.post("/", function(req, res) {
 
 })
 
+
+//for failure.html button, which is inside a form with action="/failure" method="post". It means after we post to /failure route, it will redirect us to "/" route
 app.post("/failure", function(req, res) {
   res.redirect("/")
 })
 
+
 // app.listen(3000, function() {
 //   console.log("server is running on port 3000")
 // })
+
+// 
 app.listen(process.env.PORT || 3000, function() {
   console.log("server is running on Heroku and port 3000")
 })
@@ -95,6 +103,8 @@ app.listen(process.env.PORT || 3000, function() {
 //
 // API KEY
 // e865c27be081207d05d6b879203c6cd4-us19
+// create a new key
+// 4780b14a396fc33a18e5352cd740da0a-us19
 
 // audience list id
 // cb9ed66b54
