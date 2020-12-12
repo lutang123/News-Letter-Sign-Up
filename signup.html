@@ -2,20 +2,29 @@
 <html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
+  <!-- // Responsive meta tag -->
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.6">
-  <title>Newsletter Signup</title>
-
+  
+  <!-- // this is the original link on css, it will not work, we need to copy and past the css to our local file -->
   <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
-
+  
+  <!-- // this is original when we copied, it's not working -->
   <!-- Bootstrap core CSS -->
   <!-- <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+  
   <!-- Copy Bootstrap CDN -->
+  <!-- // Copy-paste the stylesheet <link> into your <head> before all other stylesheets to load our CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <!-- //link to local file and we have specified the path in app.js app.use(express.static("public")) -->
+  <!-- if we write href="public/style.css", it will not work, because in app.js, we have alreday specified the public folder. -->
+  <link href="style.css" rel="stylesheet">
 
   <!-- Favicons -->
   <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -27,6 +36,7 @@
   <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
   <meta name="theme-color" content="#563d7c">
 
+  <title>Newsletter Signup</title>
 
   <style>
     .bd-placeholder-img {
@@ -45,30 +55,30 @@
     }
   </style>
 
-  <!-- Custom styles for this template -->
-  <!-- if we write href="public/style.css", it will not work, because in app.js, we have alreday specified the public folder. -->
-  <link href="style.css" rel="stylesheet">
-
 </head>
 
 <body class="text-center">
-  <form class="form-signin" action="/" method="post">
+  <!-- // we need to add post method and the route, the location we are going to send teh post request to -->
+  <form class="form-signin" action="/" method="post"> 
+    <!-- //this is image -->
     <img class="mb-4" src="https://library.kissclipart.com/20180918/uhe/kissclipart-web-development-logo-clipart-web-design-graphic-de-6c8592c58376d2a9.jpg" alt="" width="72" height="72">
+    <!-- // title -->
     <h1 class="h3 mb-3 font-weight-normal">Sign up My Newsletter!</h1>
 
-    <!-- autofocus in the first input means to highlight the first input -->
-    <input type="text" class="form-control" name="firstName" placeholder="First Name" required autofocus>
-    <input type="text" class="form-control" name="lastName" placeholder="Last Name" required>
-    <input type="email" class="form-control" name="email" placeholder="Email address" required>
+    <!-- autofocus in the first input means to highlight the first input, we don't need id here -->
+    <input type="text" class="form-control top" name="firstName" placeholder="First Name" required autofocus>
+    <input type="text" class="form-control middle" name="lastName" placeholder="Last Name" required>
+    <input type="email" class="form-control bottom" name="email" placeholder="Email address" required>
 
+    <!-- //before we modify, it's like this: -->
     <!-- sr means for screen readers, and for input we don't need id in our case -->
 
     <!-- <label for="inputPassword" class="sr-only">Password</label> -->
     <!-- <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> -->
-
     <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
     <!-- <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> -->
 
+    <!-- // we don't need checkbox too -->
     <!-- <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
@@ -78,6 +88,10 @@
     <button class="btn btn-lg btn-primary btn-block signup" type="submit">Sign me up!</button>
     <p class="mt-5 mb-3 text-muted">&copy; Lu Tang</p>
   </form>
+
+  <!-- // if have JQuery, paste link here
+  // if have Popper.js, paste here
+  // if have bootstrap js, paste here -->
 </body>
 
 </html>

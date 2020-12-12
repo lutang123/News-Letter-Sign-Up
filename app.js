@@ -1,21 +1,27 @@
 const express = require("express")
+
+// this is to get the data posted from html file on browser
+const bodyParser = require("body-parser")
+
 const app = express()
 
-// this is to get the data posted from html file
-const bodyParser = require("body-parser")
 app.use(bodyParser.urlencoded({
   extended: true
 }))
 
 const https = require("https")
-const request = require("request")
+// const request = require("request")  //we use https.request
 
-// use the static method from express to access local file, because our css file is on our local
+// use the static method from express to access local file, because our css file is on our local, this provide the path
 app.use(express.static("public"))
 
 // Browser send GET request (app.get) of our home route to our server, our server send a RESPONSE (res)
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/signup.html")
+})
+
+app.get("/failure", function(req, res) {
+  res.sendFile(__dirname + "/failure.html")
 })
 
 app.post("/", function(req, res) {
@@ -64,7 +70,7 @@ app.post("/", function(req, res) {
   // make the request as a constant
   const request = https.request(url, options, function(response) {
 
-    // 1. find bootstrap jumbotron: https://getbootstrap.com/docs/4.0/components/jumbotron/
+    // 1. find bootstrap component jumbotron: https://getbootstrap.com/docs/4.0/components/jumbotron/
     // 2. copy and paste the div into  in the body of failure.html and success.html
     // 3. also copy and paste the bootstrap cdn into header in order to use bootstrap
     if (response.statusCode === 200) {
@@ -94,7 +100,7 @@ app.post("/failure", function(req, res) {
 //   console.log("server is running on port 3000")
 // })
 
-// 
+//
 app.listen(process.env.PORT || 3000, function() {
   console.log("server is running on Heroku and port 3000")
 })
@@ -107,4 +113,4 @@ app.listen(process.env.PORT || 3000, function() {
 // 4780b14a396fc33a18e5352cd740da0a-us19
 
 // audience list id
-// cb9ed66b54
+// cb9ed66b54 
